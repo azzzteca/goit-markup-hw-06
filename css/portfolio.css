@@ -136,7 +136,7 @@
   color: #ffffff;
   background-color: rgba(33, 150, 243, 0.9);
 
-  transform: translateY(171%);
+  transform: translateY(101%);
   transition: transform 250ms var(--cubic-bezier);
 }
 
