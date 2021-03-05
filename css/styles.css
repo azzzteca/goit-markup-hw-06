@@ -317,6 +317,28 @@ img {
   background-color: inherit;
 }
 
+/* Формы в модальном окне */
+.backdrop-form {
+  padding: 40px;
+}
+
+.backdrop-fields {
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Наши преимущества */
 .our-advantages {
   padding-top: 94px;
