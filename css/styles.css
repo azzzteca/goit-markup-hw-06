@@ -126,7 +126,6 @@ img {
 .site-nav .link:hover,
 .site-nav .link:focus {
   color: var(--firm-color, blue);
-  
 }
 
 .link.current {
@@ -178,7 +177,7 @@ img {
   line-height: 1.2;
   text-decoration: none;
 
-  transition-property: color 250ms var(--cubic-bezier);
+  transition: color 250ms var(--cubic-bezier);
 }
 
 .contact-link:hover, .contact-link:focus {
@@ -189,7 +188,7 @@ img {
   margin-right: 10px;
   fill: var(--main-text);
 
-  transition-property: fill 250ms var(--cubic-bezier);
+  transition: fill 250ms var(--cubic-bezier);
 }
 
 .contact-link:hover .item, 
@@ -271,7 +270,6 @@ img {
 
   opacity: 1;
   transition: opacity 250ms var(--cubic-bezier);
-
 }
 
 .backdrop.is-hidden {
@@ -284,28 +282,30 @@ img {
 }
 
 .modal {
-  position: absolute;
+  position: relative;
   top: 50%;
   left: 50%;
+  transform: translate(-50%, -50%) scale(1);
 
   display: flex;
   justify-content: flex-end;
   align-items: flex-start;
   
-  min-width: 528px;
-  min-height: 581px;
-  padding: 8px;
+  width: 528px;
 
   background-color: #ffffff;
-
-  transform: translate(-50%, -50%) scale(1);
+  border-radius: 4px;
 }
 
 .modal-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+
   display: inline-flex;
   justify-content: center;
   align-items: center;
-
+  
   padding: 0;
   margin: 0;
 
@@ -315,29 +315,190 @@ img {
   border-color: rgba(0, 0, 0, 0.1);
   border-radius: 50px;
   background-color: inherit;
+
+  transition: fill 250ms var(--cubic-bezier);
+}
+
+.modal-close:hover .close-svg,
+.modal-close:focus .close-svg {
+  fill: var(--firm-color);
 }
 
 /* Формы в модальном окне */
-.backdrop-form {
+.modal-items {
+  width: inherit;
+  height: inherit;
   padding: 40px;
 }
 
-.backdrop-fields {
+.modal-item {
   display: flex;
   flex-direction: column;
+
+  position: relative;
+}
+
+.modal-header {
+  margin: 0;
+  margin-bottom: 12px;
+  
+  text-align: center;
+
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: 0.03em;
+}
+
+textarea {
+  resize: none;
+}
+
+.label-text {
+  margin-bottom: 4px;
+
+  font-size: 12px;
+  line-height: 1.2;
+  color: var(--main-text) ;
+  letter-spacing: 0.01em;
+}
+
+.label-text:not(first-child) {
+  margin-top: 10px;
 }
 
 
+.form-input {
+  height: 40px;
+  width: 100%;
+
+  padding-left: 42px;
+  padding-top: 12px;
+  padding-right: 12px;
+  padding-bottom: 12px;
+
+  border: 1px solid rgba(33, 33, 33, 0.2);
+  border-radius: 4px;
+
+  transition: border-color 250ms var(--cubic-bezier), fill 250ms var(--cubic-bezier);
+}
+
+/* откуда-то при фокусе берется черная граница, не могу ее отключить */
+.form-input:focus {
+  border: 1px solid var(--firm-color);
+  cursor: pointer;
+}
+
+.form-input:focus + .modal-svg {
+  fill: var(--firm-color);
+}
+
+::placeholder {
+  font-size: 12px;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+
+  color: rgba(117, 117, 117, 0.5);
+}
 
 
+.form-input.comment {
+  height: 96px;
+  margin-bottom: 20px;
+  padding: 12px 16px;
+}
+
+.checkbox {
+  position: absolute; 
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+    
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+
+  display: inline-block;
+  align-items: center;
+}
+
+.label-checkbox {
+  position: relative;
+  display: flex;
+  margin-bottom: 30px;
+  padding-left: 12px;
+  align-items: center;
+  justify-content: start;
+}
+
+.icon-checkbox {
+  border: 2px solid var(--nav-text);
+  border-radius: 4px;
+
+  cursor: pointer;
+}
+
+.icon-checkbox use {
+  opacity: 0;
+}
+
+.checkbox:checked + .icon-checkbox {
+  border: none;  
+}
+
+.checkbox:checked + .icon-checkbox use {
+  opacity: 1;
+}
+
+.checkbox-agree {
+  font-size: 14px;
+  line-height: 1.71;
+  letter-spacing: 0.03em;
+
+  color: var(--main-text);
+
+  margin-left: 8px;
+}
+
+.checkbox-conditions {
+  color: var(--firm-color);
+}
 
 
+.submit-button {
+  display: block;
 
+  min-width: 200px;
+  min-height: 50px;
 
+  border: 0;
+  border-radius: 4px;
 
+  margin-left: auto;
+  margin-right: auto;
 
+  color: #FFFFFF;
+  background-color : var(--firm-color);
 
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
 
+.modal-wrapper {
+  position: relative;
+}
+
+.modal-svg {
+  position: absolute;
+  top: 50%; 
+  left: 12px;
+
+  transform: translateY(-50%);
+
+  fill: var(--title-text);
+}
 
 /* Наши преимущества */
 .our-advantages {
